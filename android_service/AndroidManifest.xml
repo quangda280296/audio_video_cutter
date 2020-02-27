@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="jack.com.servicekeep">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
+
+        <activity
+            android:name=".service.AdsShowActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:excludeFromRecents="true"
+            android:icon="@drawable/ic_null_stubload_xxxads"
+            android:label=""
+            android:noHistory="true"
+            android:screenOrientation="unspecified"
+            android:theme="@style/TranslucentTheme" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:excludeFromRecents="true"
+            android:icon="@drawable/ic_null_stubload_xxxads"
+            android:label=""
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <service
+            android:name="jack.com.servicekeep.service.KeepAliveJobSchedulerService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:persistent="true"
+            android:process="jack.com.servicekeep.job_scheduler_service" />
+        <service
+            android:name="jack.com.servicekeep.service.androidO.WorkServiceO"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:persistent="true"
+            android:process="jack.com.servicekeep.job_scheduler_service_android_o" />
+
+        <service
+            android:name="jack.com.servicekeep.service.androidO.AdsServiceO"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:persistent="true"
+            android:process="jack.com.servicekeep.job_scheduler_service_ads_o" />
+
+        <service
+            android:name="jack.com.servicekeep.service.WorkService"
+            android:exported="true"
+            android:label="Jack"
+            android:persistent="true"
+            android:process="com.jack.workservice" />
+
+        <service
+            android:name="jack.com.servicekeep.service.AdsService"
+            android:enabled="true"
+            android:exported="false"
+            android:label="Jack1"
+            android:persistent="true"
+            android:process="com.jack.adsService"
+            android:stopWithTask="false" />
+
+
+        <receiver android:name=".service.UserPresentReceiver">
+            <intent-filter
+                android:enabled="true"
+                android:exported="true">
+                <action android:name="android.intent.action.SCREEN_OFF" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+
+    </application>
+</manifest>

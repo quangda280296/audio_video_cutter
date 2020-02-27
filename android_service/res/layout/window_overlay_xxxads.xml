@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:id="@+id/layout_ads_xxxads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <com.noname.quangcaoads.ads.AdsBannerView
+            android:id="@+id/ads_banner_view_xxxads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.noname.quangcaoads.ads.AdsBannerView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/btn_close_xxxads"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="7dp"
+        android:paddingRight="7dp"
+        android:src="@drawable/ic_close_xxxads"
+        android:visibility="gone"/>
+
+</RelativeLayout>

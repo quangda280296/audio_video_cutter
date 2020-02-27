@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_home"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/image_logo"
+            android:layout_width="@dimen/dp_240"
+            android:layout_height="@dimen/dp_200"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_15"
+            android:scaleType="centerInside"
+            android:src="@drawable/logo_home" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_logo"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.vietmobi.mobile.audiovideocutter.ui.widgets.imageview.ImageSquare
+                    android:id="@+id/ic_sound_cut"
+                    style="@style/wrap_wrap"
+                    android:layout_marginBottom="@dimen/dp_16"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_sound_cut" />
+
+                <com.vietmobi.mobile.audiovideocutter.ui.widgets.imageview.ImageSquare
+                    android:id="@+id/ic_soud_coupling"
+                    style="@style/wrap_wrap"
+                    android:layout_marginBottom="@dimen/dp_16"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_soud_coupling"
+                    android:visibility="gone" />
+
+                <com.vietmobi.mobile.audiovideocutter.ui.widgets.imageview.ImageSquare
+                    android:id="@+id/ic_library"
+                    style="@style/wrap_wrap"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_library" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_16"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.vietmobi.mobile.audiovideocutter.ui.widgets.imageview.ImageSquare
+                    android:id="@+id/ic_video_cut"
+                    style="@style/wrap_wrap"
+                    android:layout_marginBottom="@dimen/dp_16"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_video_cut" />
+
+                <com.vietmobi.mobile.audiovideocutter.ui.widgets.imageview.ImageSquare
+                    android:id="@+id/ic_video_couping"
+                    style="@style/wrap_wrap"
+                    android:layout_marginBottom="@dimen/dp_16"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_video_couping"
+                    android:visibility="gone" />
+
+                <com.vietmobi.mobile.audiovideocutter.ui.widgets.imageview.ImageSquare
+                    android:id="@+id/ic_more"
+                    style="@style/wrap_wrap"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_more" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center" />
+
+    </RelativeLayout>
+</layout>

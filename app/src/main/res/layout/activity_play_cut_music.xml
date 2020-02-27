@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar_play_cut_music" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".65"
+            android:background="@drawable/music">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <com.vietmobi.mobile.audiovideocutter.ui.utils.Ringdroid.WaveformView
+                    android:id="@+id/waveform"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.vietmobi.mobile.audiovideocutter.ui.utils.Ringdroid.MarkerView
+                    android:id="@+id/startmarker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/start_marker"
+                    android:nextFocusDown="@+id/endmarker"
+                    android:src="@drawable/marker_left" />
+
+                <com.vietmobi.mobile.audiovideocutter.ui.utils.Ringdroid.MarkerView
+                    android:id="@+id/endmarker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/end_marker"
+                    android:nextFocusUp="@+id/startmarker"
+                    android:nextFocusDown="@+id/info"
+                    android:src="@drawable/marker_right" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:layout_weight=".45"
+            android:background="@color/black_effective"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0.4"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/text_music_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:nextFocusUp="@+id/endmarker"
+                android:nextFocusDown="@+id/play"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
+                tools:text="Music" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/dp_8"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                tools:text="@string/appbar_scrolling_view_behavior" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/rew"
+                    style="@android:style/MediaButton"
+                    android:layout_width="64dip"
+                    android:layout_height="52dip"
+                    android:layout_marginTop="6dip"
+                    android:layout_marginBottom="6dip"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/rewind"
+                    android:src="@drawable/skip_backward" />
+
+                <ImageButton
+                    android:id="@+id/play"
+                    style="@android:style/MediaButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/play"
+                    android:padding="@dimen/dp_10"
+                    android:src="@drawable/ic_play" />
+
+                <ImageButton
+                    android:id="@+id/ffwd"
+                    style="@android:style/MediaButton"
+                    android:layout_width="64dip"
+                    android:layout_height="52dip"
+                    android:layout_marginTop="6dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_marginBottom="6dip"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/ffwd"
+                    android:src="@drawable/skip_forward" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/mark_start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:labelFor="@+id/starttext"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/start_label"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/starttext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_round_boder"
+                        android:gravity="center"
+                        android:inputType="number|numberDecimal"
+                        android:maxLines="1"
+                        android:padding="@dimen/dp_8"
+                        android:singleLine="true"
+                        android:text="00.00"
+                        android:textColor="@color/color_md_amber_900"
+                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/mark_end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:labelFor="@+id/endtext"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/end_label"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/endtext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_round_boder"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:padding="@dimen/dp_8"
+                        android:singleLine="true"
+                        android:text="00.00"
+                        android:textColor="@color/color_md_amber_900"
+                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

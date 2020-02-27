@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar_play_cut_music" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:background="@color/colorEastBay"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/layout_control">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <com.vietmobi.mobile.audiovideocutter.ui.utils.customAudioViews.WaveformView
+                    android:id="@+id/waveform"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.vietmobi.mobile.audiovideocutter.ui.utils.customAudioViews.MarkerView
+                    android:id="@+id/startmarker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/start_marker"
+                    android:nextFocusDown="@+id/endmarker"
+                    android:src="@drawable/start_dragger" />
+
+                <com.vietmobi.mobile.audiovideocutter.ui.utils.customAudioViews.MarkerView
+                    android:id="@+id/endmarker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/end_marker"
+                    android:nextFocusUp="@+id/startmarker"
+                    android:nextFocusDown="@+id/info"
+                    android:src="@drawable/marker_right" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_control"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_effective"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0.4"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#404271"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_music_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:nextFocusUp="@+id/endmarker"
+                    android:nextFocusDown="@+id/play"
+                    android:padding="@dimen/dp_8"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/white"
+                    tools:text="Music" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#373962">
+
+                    <LinearLayout
+                        android:id="@+id/layout_start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/mark_start"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:labelFor="@+id/starttext"
+                            android:padding="@dimen/dp_8"
+                            android:text="@string/start_label"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/sp_14"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/starttext"
+                            android:layout_width="@dimen/dp_100"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:gravity="center"
+                            android:inputType="number|numberDecimal"
+                            android:maxLines="1"
+                            android:padding="@dimen/dp_8"
+                            android:singleLine="true"
+                            android:text="00.00"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_start"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/mark_end"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:labelFor="@+id/endtext"
+                            android:padding="@dimen/dp_10"
+                            android:text="@string/end_label"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/sp_14"
+                            android:textStyle="bold" />
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/endtext"
+                            android:layout_width="@dimen/dp_100"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_4"
+                            android:background="@null"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:padding="@dimen/dp_8"
+                            android:singleLine="true"
+                            android:text="00.00"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/layout_start"
+                        android:gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/rew"
+                            style="@android:style/MediaButton"
+                            android:layout_width="@dimen/dp_48"
+                            android:layout_height="@dimen/dp_48"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/rewind"
+                            android:padding="@dimen/dp_8"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/skip_backward" />
+
+                        <ImageButton
+                            android:id="@+id/play"
+                            style="@android:style/MediaButton"
+                            android:layout_width="@dimen/dp_48"
+                            android:layout_height="@dimen/dp_48"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/play"
+                            android:padding="@dimen/dp_8"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_play" />
+
+                        <ImageButton
+                            android:id="@+id/ffwd"
+                            style="@android:style/MediaButton"
+                            android:layout_width="@dimen/dp_48"
+                            android:layout_height="@dimen/dp_48"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/ffwd"
+                            android:padding="@dimen/dp_8"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/skip_forward" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/dp_8"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                android:visibility="gone"
+                tools:text="@string/appbar_scrolling_view_behavior" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/text_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_8"
+                    android:text="Nghe đầu ra âm thanh"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_15" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_message">
+
+                    <ImageButton
+                        android:id="@+id/image_play"
+                        style="@android:style/MediaButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/play"
+                        android:padding="@dimen/dp_8"
+                        android:src="@drawable/play" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/text_duration_start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/image_play"
+                        android:padding="@dimen/dp_8"
+                        android:text="00:00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14" />
+
+                    <SeekBar
+                        android:id="@+id/seekbar"
+                        style="@style/HorizontalDividerTop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/text_duration"
+                        android:layout_toRightOf="@+id/text_duration_start"
+                        android:background="@null"
+                        android:max="100"
+                        android:padding="@dimen/dp_8"
+                        android:progressTint="@color/color_md_amber"
+                        android:thumbTint="@color/color_md_amber" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/text_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/dp_8"
+                        android:text="00:00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
